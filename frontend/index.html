@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>RAG API test harness</title>
+<style>
+  body { font-family: monospace; max-width: 640px; margin: 40px auto; padding: 0 16px; }
+  input { width: 100%; padding: 8px; font-size: 16px; box-sizing: border-box; }
+  button { margin-top: 8px; padding: 8px 16px; font-size: 16px; }
+  #answer { margin-top: 24px; white-space: pre-wrap; }
+  #sources { margin-top: 12px; color: #555; font-size: 14px; }
+  .note { color: #b00; font-size: 13px; margin-bottom: 24px; }
+</style>
+</head>
+<body>
+
+<h2>RAG API test harness</h2>
+<p class="note">
+  This is ONLY a test harness to prove the FastAPI /chat endpoint works from
+  a browser. It is not the final portfolio widget.
+</p>
+
+<input id="question" type="text" placeholder="Ask a question..." autofocus>
+<button id="ask">Ask</button>
+
+<div id="answer"></div>
+<div id="sources"></div>
+
+<script>
+  const API_URL = "http://127.0.0.1:8000/chat";
+
+  async function ask() {
+    const question = document.getElementById("question").value.trim();
+    if (!question) return;
+
+    const answerEl = document.getElementById("answer");
+    const sourcesEl = document.getElementById("sources");
+    answerEl.textContent = "Loading...";
+    sourcesEl.textContent = "";
+
+    try {
+      const res = await fetch(API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ question }),
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data = await res.json();
+
+      answerEl.textContent = data.answer;
+      sourcesEl.textContent = "sources: " + data.sources
+        .map(s => `${s.id} (${s.section}, ${s.similarity.toFixed(3)})`)
+        .join(", ");
+    } catch (err) {
+      answerEl.textContent = "Error: " + err.message;
+    }
+  }
+
+  document.getElementById("ask").addEventListener("click", ask);
+  document.getElementById("question").addEventListener("keydown", e => {
+    if (e.key === "Enter") ask();
+  });
+</script>
+
+</body>
+</html>
