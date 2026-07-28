@@ -1,0 +1,17 @@
+[
+  {"question": "Where does Abhiram go to school?", "expected_section": "Education"},
+  {"question": "What is Abhiram majoring in?", "expected_section": "Quick Facts"},
+  {"question": "Does Abhiram work as a tutor or learning assistant?", "expected_section": "Work Experience / Learning Assistant"},
+  {"question": "Has Abhiram done IT help desk work?", "expected_section": "Work Experience / IT Help Desk Analyst"},
+  {"question": "What did Abhiram do at Colorado State University?", "expected_section": "Work Experience / IT Help Desk Assistant, Colorado State"},
+  {"question": "Tell me about BayGuard Tampa.", "expected_section": "Projects / BayGuard Tampa"},
+  {"question": "What is TypeForge?", "expected_section": "Projects / TypeForge"},
+  {"question": "What is the DSA Explainer Pipeline project?", "expected_section": "Projects / DSA Explainer Pipeline"},
+  {"question": "What is VoiceType?", "expected_section": "Projects / VoiceType"},
+  {"question": "How was Abhiram's personal portfolio site built?", "expected_section": "Projects / Personal Portfolio"},
+  {"question": "Has Abhiram done any machine learning projects?", "expected_section": "Projects / Machine Learning Project Work"},
+  {"question": "What programming languages does Abhiram know?", "expected_section": "Technical Skills"},
+  {"question": "What hackathons has Abhiram attended?", "expected_section": "Hackathons and Events"},
+  {"question": "What are Abhiram's hobbies and interests outside of tech?", "expected_section": "Interests and Background"},
+  {"question": "Is Abhiram available for internships?", "expected_section": "Frequently Asked Questions"}
+]
