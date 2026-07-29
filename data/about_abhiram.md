@@ -4,16 +4,16 @@
 - Full name: Abhiram Vedipala
 - Location: Miami, Florida
 - School: Florida International University (FIU)
-- Majors: Computer Science and Data Science
+- Majors: Computer Science ( concentration in AI  and Data Science ) 
 - Year: Sophomore/junior, ~3 semesters remaining
 - Portfolio: https://abhiramreddy.dev
 - GitHub: https://github.com/abhiramvedipala
 - LinkedIn: https://www.linkedin.com/in/abhiram-reddy-vedipala
 - Email: abhiramreddy.vedipala@gmail.com
-- Currently seeking: Summer internships in AI/ML engineering and data science
+- Currently seeking: Summer internships or full time and even open for volunatary job opportnities  in AI/ML engineering and data science
 
 ## Education
-Abhiram studies Computer Science and Data Science at Florida
+Abhiram studies Computer Science (Concentration in AI and Data Science) at Florida
 International University in Miami. He transferred to FIU from Colorado
 State University in Spring 2025.
 
@@ -125,6 +125,7 @@ Leontief input-output models
 
 ## Hackathons and Events
 - HackUSF 2026 — built BayGuard Tampa
+- Shell Hacks 2026 
 - Applied to HackPrinceton, Bitcamp, and VandyHacks
 - Attended WiTCON 2026, a women-in-tech conference at FIU with Google,
   Microsoft, and DataDog present
@@ -167,4 +168,4 @@ linkedin.com/in/abhiram-reddy-vedipala.
 
 Q: What is he learning right now?
 A: Full-stack development fundamentals and RAG systems, alongside
-continued machine learning work.
+continued machine learning work and GenAI including Multi agents 
