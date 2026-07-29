@@ -4,11 +4,12 @@ between the CLI and the API.
 Run:  uvicorn api.main:app --reload
 """
 
+import logging
 import os
 import sys
 from pathlib import Path
 
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
@@ -38,7 +39,15 @@ def health():
 
 @app.post("/chat", response_model=ChatResponse)
 def chat(request: ChatRequest):
-    answer, chunks = ask(request.question)
+    try:
+        answer, chunks = ask(request.question)
+    except Exception as exc:
+        # Without this the client just gets a bare "Internal Server Error" and
+        # the reason is buried in the platform logs. None of these messages
+        # contain the token -- only the provider's own explanation.
+        logging.exception("chat request failed")
+        raise HTTPException(status_code=502, detail=str(exc)) from exc
+
     sources = [
         {"id": c["id"], "section": c["section"], "similarity": c["similarity"]}
         for c in chunks
