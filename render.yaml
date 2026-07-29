@@ -8,5 +8,8 @@ services:
         value: huggingface
       - key: HF_TOKEN
         sync: false
+      # The apex redirects to www, so the browser sends the www origin -- the
+      # apex alone would reject every real request. localhost entries keep the
+      # Vite dev server working against this backend.
       - key: CORS_ORIGINS
-        value: "*"
+        value: "https://www.abhiramreddy.dev,https://abhiramreddy.dev,http://localhost:8080,http://127.0.0.1:8080"
