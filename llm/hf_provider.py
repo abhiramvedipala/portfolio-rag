@@ -30,5 +30,13 @@ class HFProvider(LLMProvider):
             },
             timeout=60,
         )
-        response.raise_for_status()
+        if not response.ok:
+            # raise_for_status() alone only reports the status code, which turns
+            # every provider-side problem into an indistinguishable 500. HF puts
+            # the actual reason (gated model, missing permission, out of credits)
+            # in the body, so surface that too.
+            raise RuntimeError(
+                f"Hugging Face returned {response.status_code} for model "
+                f"{self.model!r}: {response.text[:500]}"
+            )
         return response.json()["choices"][0]["message"]["content"]
