@@ -14,6 +14,8 @@ COPY api/ api/
 # fresh from data/about_abhiram.md as part of the image build.
 RUN python scripts/embed.py
 
-# HF Spaces (Docker SDK) routes traffic to port 7860 specifically.
+# Default to 7860 (HF Spaces' Docker SDK routes traffic there specifically);
+# Render and most other hosts inject their own $PORT and this picks it up.
+ENV PORT=7860
 EXPOSE 7860
-CMD ["uvicorn", "api.main:app", "--host", "0.0.0.0", "--port", "7860"]
+CMD ["sh", "-c", "uvicorn api.main:app --host 0.0.0.0 --port ${PORT}"]

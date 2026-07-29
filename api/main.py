@@ -4,6 +4,7 @@ between the CLI and the API.
 Run:  uvicorn api.main:app --reload
 """
 
+import os
 import sys
 from pathlib import Path
 
@@ -17,9 +18,14 @@ from api.schemas import ChatRequest, ChatResponse
 
 app = FastAPI()
 
+# CORS_ORIGINS is a comma-separated list, e.g. "https://abhiramreddy.dev".
+# Defaults to "*" so local/dev testing keeps working without config.
+_origins = os.getenv("CORS_ORIGINS", "*")
+allow_origins = ["*"] if _origins == "*" else [o.strip() for o in _origins.split(",")]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=allow_origins,
     allow_methods=["*"],
     allow_headers=["*"],
 )
